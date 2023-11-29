@@ -69,17 +69,15 @@ def calculate_probabilities_and_odds(teams_info):
     odd_B = 1 / P_B
 
     json_result = {
-        f"Probabilidade de time {team_info_A['shortName']} ganhar": f"{P_A * 100:.2f}%",
-        "Probabilidade de empate": f"{P_Draw * 100:.2f}%",
-        f"Probabilidade de time {team_info_B['shortName']} ganhar": f"{P_B * 100:.2f}%",
-        f"Odd do {team_info_A['shortName']}": f"{odd_A:.2f}",
-        "Odd de Empate": f"{odd_Draw:.2f}",
-        f"Odd do {team_info_B['shortName']}": f"{odd_B:.2f}",
+        "probabilidadeEmpate": f"{P_Draw * 100:.2f}%",
+        "probabilidadeTeamA": f"{P_A * 100:.2f}%",
+        "probabilidadeTeamB": f"{P_B * 100:.2f}%",
+        "oddTeamA": f"{odd_A:.2f}",
+        "oddEmpate": f"{odd_Draw:.2f}",
+        "oddTeamB": f"{odd_B:.2f}",
     }
 
     return json_result
-
-    # return P_A, P_Draw, P_B, odd_A, odd_Draw, odd_B
 
 
 @app.route("/calculate", methods=["POST"])
@@ -133,8 +131,12 @@ def calculateOdds():
                     )
 
             odds_info = calculate_probabilities_and_odds(teams_to_check)
+            teams_stats = {
+                "teamA": teams_to_check[0],
+                "teamB": teams_to_check[1],
+            }
 
-            return jsonify(odds_info)
+            return jsonify({"odds": odds_info, "teamStats": teams_stats})
         else:
             return jsonify({"error": "Failed to fetch data from external API"}), 500
     except Exception as e:

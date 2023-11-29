@@ -36,11 +36,35 @@
   - retorna os seguintes valores
     ```
     {
-    	"Odd de Empate": "3.00",
-    	"Odd do Flamengo": "2.00",
-    	"Odd do Palmeiras": "2.00",
-    	"Probabilidade de empate": "33.33%",
-    	"Probabilidade de time Flamengo ganhar": "50.00%",
-    	"Probabilidade de time Palmeiras ganhar": "50.00%"
+        "odds": {
+            "oddEmpate": "3.00",
+            "oddTeamA": "2.00",
+            "oddTeamB": "2.00",
+            "probabilidadeEmpate": "33.33%",
+            "probabilidadeTimeA": "50.00%",
+            "probabilidadeTimeB": "50.00%"
+        },
+        "teamStats": {
+            "teamA": {
+                "draw": 9,
+                "goalDifference": 26,
+                "goalFor": 58,
+                "id": 1769,
+                "lost": 8,
+                "name": "SE Palmeiras",
+                "shortName": "Palmeiras",
+                "won": 18
+            },
+            "teamB": {
+                "draw": 9,
+                "goalDifference": 17,
+                "goalFor": 54,
+                "id": 1783,
+                "lost": 8,
+                "name": "CR Flamengo",
+                "shortName": "Flamengo",
+                "won": 18
+            }
+        }
     }
-    ```
+```
