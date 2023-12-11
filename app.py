@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 import requests
 import os
 from dotenv import load_dotenv
+from flask_cors import CORS; # Importação da extensão CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app) # Inicialização do CORS com a aplicação Flask
 
 API_TOKEN = os.getenv("API_TOKEN")
 BASE_URL = "https://api.football-data.org/v4"
