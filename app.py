@@ -8,7 +8,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-CORS(app) # Inicialização do CORS com a aplicação Flask
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}}) # Inicialização do CORS com a aplicação Flask
 
 API_TOKEN = os.getenv("API_TOKEN")
 BASE_URL = "https://api.football-data.org/v4"
